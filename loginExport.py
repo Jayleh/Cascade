@@ -14,8 +14,8 @@ def setUp():
 
 def loginExport():
     # Log In into Unleashed
-    UnleashedUsername = "connor@cellese.com"
-    UnleashedPassword = "3rZup3WiqEi9"
+    UnleashedUsername = ""
+    UnleashedPassword = ""
     emailFieldID = "username"
     passFieldID = "password"
     loginButtonXpath = """//input[@value='Log In']"""
