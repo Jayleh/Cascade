@@ -49,7 +49,7 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
-def main():
+def upload():
     # authorize
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
@@ -81,4 +81,4 @@ def main():
         print('File ID: %s' % file.get('id'))
 
 if __name__ == '__main__':
-    main()
+    upload()
