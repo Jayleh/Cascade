@@ -59,7 +59,7 @@ def upload():
     timestr = time.strftime("%Y%m%d-%H%M%S")
     old_file = os.path.join(r"C:\Users\Justin\Desktop\Cellese Cascade", "SalesEnquiryList.csv")
     new_filename = "SalesEnquiryList " + timestr + ".csv"
-    new_file = os.path.join(r"C:\Users\Justin\Desktop\Cellese Cascade", new_filename)
+    new_file = os.path.join(r"C:\Users\Justin\Desktop\Cellese Cascade\Cellese Sales Enquiries", new_filename)
     os.rename(old_file, new_file)
     
     # Upload CSV file to drive

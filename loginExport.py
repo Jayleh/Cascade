@@ -2,17 +2,17 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-chromePath = r"C:\Users\Justin\Desktop\Cellese Cascade\webdriver\chromedriver.exe"
-chromeOptions = webdriver.ChromeOptions()
-prefs = {"download.default_directory" : r"C:\Users\Justin\Desktop\Cellese Cascade"}
-chromeOptions.add_experimental_option("prefs", prefs)
-driver = webdriver.Chrome(executable_path=chromePath, chrome_options=chromeOptions)
+def loginExport():
+    # setUp
+    chromePath = r"C:\Users\Justin\Desktop\Cellese Cascade\cascadeSource\webdriver\chromedriver.exe"
+    chromeOptions = webdriver.ChromeOptions()
+    prefs = {"download.default_directory" : r"C:\Users\Justin\Desktop\Cellese Cascade"}
+    chromeOptions.add_experimental_option("prefs", prefs)
+    driver = webdriver.Chrome(executable_path=chromePath, chrome_options=chromeOptions)
 
-def setUp():
     driver.get("https://ap.unleashedsoftware.com/v2/Enquiry/SalesEnquiry")
     driver.maximize_window()
 
-def loginExport():
     # Log In into Unleashed
     UnleashedUsername = ""
     UnleashedPassword = ""
@@ -40,10 +40,9 @@ def loginExport():
     # Wait for file to download
     time.sleep(10)
 
-def tearDown():
+    # tearDown
     driver.quit()
 
 if __name__ == '__main__':
-    setUp()
     loginExport()
-    tearDown()
+    
