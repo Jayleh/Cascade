@@ -1,17 +1,8 @@
 from __future__ import print_function
 import unittest
-import os
 import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-
-import httplib2
-
-from apiclient import discovery
-from googleapiclient.http import MediaFileUpload
-from oauth2client import client
-from oauth2client import tools
-from oauth2client.file import Storage
 
 class Test(unittest.TestCase):
 
