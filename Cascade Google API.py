@@ -50,20 +50,24 @@ def get_credentials():
     return credentials
 
 def main():
-    # Upload CSV file to drive.
+    # authorize
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     drive_service = discovery.build('drive', 'v3', http=http)
 
     # Rename CSV file with date and time
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    old_file = os.path.join(r"C:\Users\Justin\Desktop\Cascade CSV Export Files", "SalesEnquiryList.csv")
-    new_file = os.path.join(r"C:\Users\Justin\Desktop\Cascade CSV Export Files", "SalesEnquiryList " + timestr + ".csv")
+    old_file = os.path.join(r"C:\Users\Justin\Desktop\Cellese Cascade", "SalesEnquiryList.csv")
+    new_filename = "SalesEnquiryList " + timestr + ".csv"
+    new_file = os.path.join(r"C:\Users\Justin\Desktop\Cellese Cascade", new_filename)
     os.rename(old_file, new_file)
-
+    
+    # Upload CSV file to drive
+    os.chdir(r"C:\Users\Justin\Desktop\Cellese Cascade")
+    
     folder_id = "1JUpm6FzLF5ebIT-uY-UfrsFtj9z6ilYG"
     file_metadata = {
-        'name': new_file,
+        'name': new_filename,
         'mimeType': 'application/vnd.google-apps.spreadsheet',
         'parents': [folder_id]
     }

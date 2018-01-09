@@ -1,4 +1,3 @@
-from __future__ import print_function
 import unittest
 import time
 from selenium import webdriver
@@ -7,13 +6,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 class Test(unittest.TestCase):
 
     def setUp(self):
-        chromePath = r"D:\Chrome Downloads\webdrivers\chromedriver.exe"
+        chromePath = r"C:\Users\Justin\Desktop\Cellese Cascade\webdriver\chromedriver.exe"
         chromeOptions = webdriver.ChromeOptions()
-        prefs = {"download.default_directory" : r"C:\Users\Justin\Desktop\Cascade CSV Export Files"}
+        prefs = {"download.default_directory" : r"C:\Users\Justin\Desktop\Cellese Cascade"}
         chromeOptions.add_experimental_option("prefs", prefs)
         
         self.driver = webdriver.Chrome(executable_path=chromePath, chrome_options=chromeOptions)
         self.driver.get("https://ap.unleashedsoftware.com/v2/Enquiry/SalesEnquiry")
+        self.driver.maximize_window()
                 
     def test_Unleashed(self):
         driver = self.driver
@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         
         # Export CSV file
         exportButtonXpath = """//*[@id="ddbExport"]/dl/dd/ul/li[2]/a"""
-        
+                
         exportDropdownElement = WebDriverWait(driver, 10).until(lambda driver: driver.find_element_by_class_name("arrowDown"))
         exportDropdownElement.click()
                 
