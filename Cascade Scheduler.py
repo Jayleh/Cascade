@@ -1,6 +1,5 @@
 from datetime import datetime
 import time
-from selenium import webdriver
 import schedule
 
 # You will need to put your own function in place of job and run it with nohup, e.g.:
