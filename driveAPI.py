@@ -21,6 +21,7 @@ SCOPES = 'https://www.googleapis.com/auth/drive.file'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Cascade'
 
+
 def get_credentials():
     """Gets valid user credentials from storage.
 
@@ -44,10 +45,11 @@ def get_credentials():
         flow.user_agent = APPLICATION_NAME
         if flags:
             credentials = tools.run_flow(flow, store, flags)
-        else: # Needed only for compatibility with Python 2.6
+        else:  # Needed only for compatibility with Python 2.6
             credentials = tools.run(flow, store)
         print('Storing credentials to ' + credential_path)
     return credentials
+
 
 def upload():
     # authorize
@@ -57,14 +59,16 @@ def upload():
 
     # Rename CSV file with date and time
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    old_file = os.path.join(r"D:\Cellese Unleashed Cascade", "SalesEnquiryList.csv")
+    old_file = os.path.join(
+        r"D:\Cellese Unleashed Cascade", "SalesEnquiryList.csv")
     new_filename = "SalesEnquiryList " + timestr + ".csv"
-    new_file = os.path.join(r"D:\Cellese Unleashed Cascade\Sales Enquiries", new_filename)
+    new_file = os.path.join(
+        r"D:\Cellese Unleashed Cascade\Sales Enquiries", new_filename)
     os.rename(old_file, new_file)
-    
+
     # Upload CSV file to drive
     os.chdir(r"D:\Cellese Unleashed Cascade")
-    
+
     folder_id = "1JUpm6FzLF5ebIT-uY-UfrsFtj9z6ilYG"
     file_metadata = {
         'name': new_filename,
@@ -75,10 +79,11 @@ def upload():
                             mimetype='text/csv',
                             resumable=True)
     file = drive_service.files().create(body=file_metadata,
-                                    media_body=media,
-                                    fields='id').execute()
+                                        media_body=media,
+                                        fields='id').execute()
     if file:
         print('File ID: %s' % file.get('id'))
+
 
 if __name__ == '__main__':
     upload()
