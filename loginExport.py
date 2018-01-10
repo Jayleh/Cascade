@@ -4,9 +4,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 def loginExport():
     # setUp
-    chromePath = r"C:\Users\Justin\Desktop\Cellese Cascade\cascadeSource\webdriver\chromedriver.exe"
+    chromePath = r"D:\Cellese Unleashed Cascade\cascadeSource\webdriver\chromedriver.exe"
     chromeOptions = webdriver.ChromeOptions()
-    prefs = {"download.default_directory" : r"C:\Users\Justin\Desktop\Cellese Cascade"}
+    prefs = {"download.default_directory" : r"D:\Cellese Unleashed Cascade"}
     chromeOptions.add_experimental_option("prefs", prefs)
     driver = webdriver.Chrome(executable_path=chromePath, chrome_options=chromeOptions)
 
@@ -14,8 +14,8 @@ def loginExport():
     driver.maximize_window()
 
     # Log In into Unleashed
-    UnleashedUsername = ""
-    UnleashedPassword = ""
+    UnleashedUsername = "****"
+    UnleashedPassword = "****"
     emailFieldID = "username"
     passFieldID = "password"
     loginButtonXpath = """//input[@value='Log In']"""
