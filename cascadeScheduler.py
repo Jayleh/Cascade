@@ -1,7 +1,7 @@
 import time
 import schedule
 from cascadeSource.loginExport import loginExport
-from cascadeSource.googleDriveAPI.driveAPI import upload
+from cascadeSource.googleDriveAPI.pygsheetsAPI import update
 
 # You will need to put your own function in place of job and run it with nohup, e.g.:
 # nohup python2.7 MyScheduledProgram.py &
@@ -10,13 +10,13 @@ from cascadeSource.googleDriveAPI.driveAPI import upload
 def job():
     print("Working on it..")
     loginExport()
-    upload()
+    update()
     print("I did it!")
     return
 
 
 # schedule to run everyday at 11:00am
-schedule.every().day.at("13:36").do(job)
+schedule.every().day.at("10:51").do(job)
 
 # schedule.every(5).minutes.do(job)
 
