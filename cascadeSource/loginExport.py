@@ -16,8 +16,8 @@ def loginExport():
     driver.maximize_window()
 
     # Log In into Unleashed
-    UnleashedUsername = "****"
-    UnleashedPassword = "****"
+    UnleashedUsername = ""
+    UnleashedPassword = ""
     emailFieldID = "username"
     passFieldID = "password"
     loginButtonXpath = """//input[@value='Log In']"""
