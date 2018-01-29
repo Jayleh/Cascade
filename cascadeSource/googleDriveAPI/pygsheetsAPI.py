@@ -27,7 +27,9 @@ def update():
     df.Sales = df.Sales.str.replace(',', '')
     df.Quantity = df.Quantity.str.replace(',', '')
     df.Sales = df.Sales.astype('float64')
+    df.Sales = df.Sales.round(2)
     df.Quantity = df.Quantity.astype('float64')
+    df.Quantity = df.Quantity.round(2)
 
     # Delete rows
     status = ['Deleted', 'Totals']
