@@ -6,7 +6,7 @@ import pygsheets
 
 
 def update():
-    # read csv file
+    # Read exported csv file and write to new csv file
     path = r'D:\Cellese Unleashed Cascade\SalesEnquiryList.csv'
 
     with open(path, 'r', encoding='utf-8', errors='ignore') as infile, open('SalesReport.csv', 'w') as outfile:
@@ -19,7 +19,26 @@ def update():
                 continue
             output.writerow(row)
 
+    # Read new csv and set to dataframe
     df = pd.read_csv('SalesReport.csv')
+
+    # Rename columns
+    df = df.rename(columns={'Sub Total': 'Sales'})
+
+    # Delete rows
+    status = ['Deleted', 'Totals']
+    df = df[~df['Status'].isin(status)]
+
+    # Format dates to datetime and sort rows by date
+    df['Order Date'] = pd.to_datetime(df['Order Date'])
+    df['Completed Date'] = pd.to_datetime(df['Completed Date'])
+    df = df.sort_values(by='Order Date')
+
+    # Format dates to strings with strftime
+    df['Order Date'] = df['Order Date'].dt.strftime('%Y/%m/%d')
+    df['Completed Date'] = df['Completed Date'].dt.strftime('%Y/%m/%d')
+
+    # Set credentials and designate sheet id
     creds = r'D:\Cellese Unleashed Cascade\cascadeSource\googleDriveAPI\client_secret_serviceKey.json'
     sheet_id = '****'
 
@@ -27,17 +46,17 @@ def update():
     client = pygsheets.authorize(service_file=creds)
     sheet = client.open_by_key(sheet_id).sheet1
 
-    # update the first sheet with df, starting at cell B2.
+    # Update the first sheet with df, starting at cell B2.
     sheet.set_dataframe(df, 'A1')
 
-    # wait
+    # Wait
     time.sleep(10)
 
-    # delete csv files
+    # Delete csv files
     os.remove('SalesEnquiryList.csv')
     os.remove('SalesReport.csv')
 
-    # check transfer
+    # Check transfer
     data = sheet.get_all_records()
     print(data)
 

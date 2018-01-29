@@ -15,11 +15,11 @@ def job():
     return
 
 
-# schedule to run everyday at 11:00am
+# Schedule to run everyday at 11:00am
 schedule.every().day.at("10:51").do(job)
 
 # schedule.every(5).minutes.do(job)
 
 while True:
     schedule.run_pending()
-    time.sleep(1)  # wait one sec
+    time.sleep(1)  # Wait one sec
