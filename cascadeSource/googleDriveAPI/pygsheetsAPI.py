@@ -24,6 +24,10 @@ def update():
 
     # Rename columns
     df = df.rename(columns={'Sub Total': 'Sales'})
+    df.Sales = df.Sales.str.replace(',', '')
+    df.Quantity = df.Quantity.str.replace(',', '')
+    df.Sales = df.Sales.astype('float64')
+    df.Quantity = df.Quantity.astype('float64')
 
     # Delete rows
     status = ['Deleted', 'Totals']
@@ -35,8 +39,8 @@ def update():
     df = df.sort_values(by='Order Date')
 
     # Format dates to strings with strftime
-    df['Order Date'] = df['Order Date'].dt.strftime('%Y/%m/%d')
-    df['Completed Date'] = df['Completed Date'].dt.strftime('%Y/%m/%d')
+    df['Order Date'] = df['Order Date'].dt.strftime('%m/%d')
+    df['Completed Date'] = df['Completed Date'].dt.strftime('%m/%d')
 
     # Set credentials and designate sheet id
     creds = r'D:\Cellese Unleashed Cascade\cascadeSource\googleDriveAPI\client_secret_serviceKey.json'
