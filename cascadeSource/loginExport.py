@@ -5,9 +5,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 def loginExport():
     # setUp
-    chromePath = r"D:\Cellese Unleashed Cascade\cascadeSource\webdriver\chromedriver.exe"
+    chromePath = "cascadeSource/webdriver/chromedriver.exe"
     chromeOptions = webdriver.ChromeOptions()
-    prefs = {"download.default_directory": r"D:\Cellese Unleashed Cascade"}
+    prefs = {"download.default_directory": r"D:\Cellese Unleashed Cascade\SalesEnquiries"}
     chromeOptions.add_experimental_option("prefs", prefs)
     driver = webdriver.Chrome(
         executable_path=chromePath, chrome_options=chromeOptions)

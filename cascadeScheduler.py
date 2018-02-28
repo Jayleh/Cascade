@@ -1,6 +1,7 @@
 import time
 import schedule
 from cascadeSource.loginExport import loginExport
+from cascadeSource.cleanSales import cleanSales
 from cascadeSource.googleDriveAPI.pygsheetsAPI import update
 
 # You will need to put your own function in place of job and run it with nohup, e.g.:
@@ -8,17 +9,18 @@ from cascadeSource.googleDriveAPI.pygsheetsAPI import update
 
 
 def job():
-    print("Working on it..")
+    print("Working on it...")
     loginExport()
+    cleanSales()
     update()
     print("I did it!")
     return
 
 
-# Schedule to run everyday at 11:00am
-schedule.every().day.at("10:51").do(job)
+# Schedule to run everyday at 24:00
+schedule.every().day.at("14:22").do(job)
 
-# schedule.every(5).minutes.do(job)
+# schedule.every(15).minutes.do(job)
 
 while True:
     schedule.run_pending()
