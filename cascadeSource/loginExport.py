@@ -1,6 +1,11 @@
 import time
+import sys
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+
+# Change sys path
+sys.path.insert(0, 'cascadeSource/config/')
+from config import username, password
 
 
 def loginExport():
@@ -16,8 +21,8 @@ def loginExport():
     driver.maximize_window()
 
     # Log In into Unleashed
-    UnleashedUsername = ""
-    UnleashedPassword = ""
+    UnleashedUsername = username
+    UnleashedPassword = password
     emailFieldID = "username"
     passFieldID = "password"
     loginButtonXpath = """//input[@value='Log In']"""

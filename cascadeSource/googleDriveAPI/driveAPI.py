@@ -52,7 +52,7 @@ def get_credentials():
 
 
 def upload():
-    # authorize
+    # Authorize
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     drive_service = discovery.build('drive', 'v3', http=http)
@@ -69,7 +69,7 @@ def upload():
     # Upload CSV file to drive
     os.chdir(r"D:\Cellese Unleashed Cascade")
 
-    folder_id = "****"
+    folder_id = ""
     file_metadata = {
         'name': new_filename,
         'mimeType': 'application/vnd.google-apps.spreadsheet',
